@@ -5,7 +5,7 @@ module RedmineWebhook
       issue = context[:issue]
       controller = context[:controller]
       project = issue.project
-      #webhooks = Webhook.where(:project_id => project.project.id)
+      webhooks = Webhook.where(:project_id => project.project.id)
       #return unless webhooks
       post(webhooks, issue_to_json(issue, controller))
     end
