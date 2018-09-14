@@ -5,8 +5,8 @@ module RedmineWebhook
       issue = context[:issue]
       controller = context[:controller]
       project = issue.project
-      webhooks = Webhook.where(:project_id => project.project.id)
-      return unless webhooks
+      #webhooks = Webhook.where(:project_id => project.project.id)
+      #return unless webhooks
       post(webhooks, issue_to_json(issue, controller))
     end
 
@@ -44,17 +44,20 @@ module RedmineWebhook
 
     def post(webhooks, request_body)
       Thread.start do
-        webhooks.each do |webhook|
+        #webhooks.each do |webhook|
           begin
             Faraday.post do |req|
-              req.url webhook.url
+              req.url 'http://192.168.101.19:8096/egova/code-review/statis/test'
               req.headers['Content-Type'] = 'application/json'
+              Rails.logger.warn '>>>>>>>>>>>>>'
+              Rails.logger.warn request_body
+              Rails.logger.warn '<<<<<<<<<<<<<'
               req.body = request_body
             end
           rescue => e
             Rails.logger.error e
           end
-        end
+        #end
       end
     end
   end
