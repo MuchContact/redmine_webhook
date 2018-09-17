@@ -47,9 +47,9 @@ module RedmineWebhook
         #webhooks.each do |webhook|
           begin
             Faraday.post do |req|
-              req.url 'http://192.168.101.19:8096/egova/code-review/statis/test'
+              req.url 'http://47.74.183.53:6050/egova/code-review/designs'
               req.headers['Content-Type'] = 'application/json'
-              Rails.logger.warn '>>>>>>>>>>>>>'
+              Rails.logger.warn '>>>>>>>>>>>>>[Webhook for code-review platform], target url is http://47.74.183.53:6050/egova/code-review/designs'
               Rails.logger.warn request_body
               Rails.logger.warn '<<<<<<<<<<<<<'
               req.body = request_body

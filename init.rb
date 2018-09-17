@@ -11,7 +11,7 @@ Redmine::Plugin.register :redmine_webhook do
   author 'suer'
   description 'A Redmine plugin posts webhook on creating and updating tickets'
   version '0.0.2'
-  url 'http://192.168.101.19:8096/egova/code-review/statis/test'
-  author_url 'http://d.hatena.ne.jp/suer'
+  url 'https://github.com/MuchContact/redmine_webhook'
+  author_url 'https://github.com/suer/redmine_webhook'
   permission :manage_hook, {:webhook_settings => [:show,:update,:create, :destroy]}, :require => :member
 end
